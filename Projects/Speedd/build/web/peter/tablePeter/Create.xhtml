@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TablePeterCreateDlg" widgetVar="TablePeterCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTablePeterTitle}">
+            <h:form id="TablePeterCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tablePeterController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTablePeterLabel_llavePrimaria}" for="llavePrimaria" />
+                        <p:inputText id="llavePrimaria" value="#{tablePeterController.selected.llavePrimaria}" title="#{bundle.CreateTablePeterTitle_llavePrimaria}" required="true" requiredMessage="#{bundle.CreateTablePeterRequiredMessage_llavePrimaria}"/>
+                        <p:outputLabel value="#{bundle.CreateTablePeterLabel_textoUno}" for="textoUno" />
+                        <p:inputText id="textoUno" value="#{tablePeterController.selected.textoUno}" title="#{bundle.CreateTablePeterTitle_textoUno}" required="true" requiredMessage="#{bundle.CreateTablePeterRequiredMessage_textoUno}"/>
+                        <p:outputLabel value="#{bundle.CreateTablePeterLabel_textoDos}" for="textoDos" />
+                        <p:inputText id="textoDos" value="#{tablePeterController.selected.textoDos}" title="#{bundle.CreateTablePeterTitle_textoDos}" required="true" requiredMessage="#{bundle.CreateTablePeterRequiredMessage_textoDos}"/>
+                        <p:outputLabel value="#{bundle.CreateTablePeterLabel_textoTres}" for="textoTres" />
+                        <p:inputText id="textoTres" value="#{tablePeterController.selected.textoTres}" title="#{bundle.CreateTablePeterTitle_textoTres}" required="true" requiredMessage="#{bundle.CreateTablePeterRequiredMessage_textoTres}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tablePeterController.create}" value="#{bundle.Save}" update="display,:TablePeterListForm:datalist,:growl" oncomplete="handleSubmit(args,'TablePeterCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TablePeterCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

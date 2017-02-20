@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <script type="text/javascript" src="/ckeditor/ckeditor.js" /> 
+    </h:head>
+    <h:body>
+
+        <h:form id="ckEditorForm">
+            <h:inputHidden required="false" value="mundo" id="editorValue" />
+            <textarea cols="140" rows="40" id="editor1" name="editor1">
+        <h:outputText value="hola"/>
+            </textarea>
+            <script type="text/javascript">
+                CKEDITOR.replace('editor1',
+                        {
+                            uiColor: '#ECE8DA'
+                        });
+            </script>  
+
+            <h:commandButton id="saveButton" value="Save" 
+                             onclick="document.getElementById('addNoteForm:editorValue').value =
+                                             CKEDITOR.instances.editor1.getData();" 
+                             />
+        </h:form>
+
+    </h:body>
+</html>
+

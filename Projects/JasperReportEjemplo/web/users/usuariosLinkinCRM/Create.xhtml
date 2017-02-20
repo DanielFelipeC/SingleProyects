@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UsuariosLinkinCRMCreateDlg" widgetVar="UsuariosLinkinCRMCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateUsuariosLinkinCRMTitle}">
+            <h:form id="UsuariosLinkinCRMCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{usuariosLinkinCRMController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateUsuariosLinkinCRMLabel_IDUsuarios}" for="IDUsuarios" />
+                        <p:inputText id="IDUsuarios" value="#{usuariosLinkinCRMController.selected.IDUsuarios}" title="#{bundle.CreateUsuariosLinkinCRMTitle_IDUsuarios}" required="true" requiredMessage="#{bundle.CreateUsuariosLinkinCRMRequiredMessage_IDUsuarios}"/>
+                        <p:outputLabel value="#{bundle.CreateUsuariosLinkinCRMLabel_login}" for="login" />
+                        <p:inputText id="login" value="#{usuariosLinkinCRMController.selected.login}" title="#{bundle.CreateUsuariosLinkinCRMTitle_login}" />
+                        <p:outputLabel value="#{bundle.CreateUsuariosLinkinCRMLabel_password}" for="password" />
+                        <p:inputText id="password" value="#{usuariosLinkinCRMController.selected.password}" title="#{bundle.CreateUsuariosLinkinCRMTitle_password}" />
+                        <p:outputLabel value="#{bundle.CreateUsuariosLinkinCRMLabel_nombreUsuario}" for="nombreUsuario" />
+                        <p:inputText id="nombreUsuario" value="#{usuariosLinkinCRMController.selected.nombreUsuario}" title="#{bundle.CreateUsuariosLinkinCRMTitle_nombreUsuario}" />
+                        <p:outputLabel value="#{bundle.CreateUsuariosLinkinCRMLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{usuariosLinkinCRMController.selected.email}" title="#{bundle.CreateUsuariosLinkinCRMTitle_email}" />
+                        <p:outputLabel value="#{bundle.CreateUsuariosLinkinCRMLabel_foto}" for="foto" />
+                        <p:inputTextarea rows="4" cols="30" id="foto" value="#{usuariosLinkinCRMController.selected.foto}" title="#{bundle.CreateUsuariosLinkinCRMTitle_foto}" />
+                        <p:outputLabel value="#{bundle.CreateUsuariosLinkinCRMLabel_telefono}" for="telefono" />
+                        <p:inputText id="telefono" value="#{usuariosLinkinCRMController.selected.telefono}" title="#{bundle.CreateUsuariosLinkinCRMTitle_telefono}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{usuariosLinkinCRMController.create}" value="#{bundle.Save}" update="display,:UsuariosLinkinCRMListForm:datalist,:growl" oncomplete="handleSubmit(args,'UsuariosLinkinCRMCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="UsuariosLinkinCRMCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

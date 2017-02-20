@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        Hello from Facelets
+        <br />
+        <h:link outcome="/usuariosLinkinCRM/List" value="Show All UsuariosLinkinCRM Items"/>
+        <h:form>
+            
+            <h:commandButton value="Insertar" actionListener="#{usuariosLinkinCRMController.create()}"/> 
+            
+            
+            <br/>
+            <h:commandButton value="Exportar PDf" actionListener="#{usuariosLinkinCRMController.exportarAllPDF}"/> 
+            <h:commandButton value="Ver PDf" actionListener="#{usuariosLinkinCRMController.verPDF}"/> 
+            <h:commandButton value="Exportar Excel" actionListener="#{usuariosLinkinCRMController.exportarExcel}"/> 
+            <h:commandButton value="Exportar Doc" actionListener="#{usuariosLinkinCRMController.exportarDOC}"/> 
+            <h:commandButton value="Exportar Power Point" actionListener="#{usuariosLinkinCRMController.exportarPPT}"/> 
+            <h:commandButton value="Exportar Html" actionListener="#{usuariosLinkinCRMController.exportarHtml}"/>     
+        </h:form> 
+    </h:body>
+
+</html>
+

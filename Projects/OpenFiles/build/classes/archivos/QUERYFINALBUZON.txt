@@ -1,0 +1,178 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema bdbuzons
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema bdbuzons
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `bdbuzons` DEFAULT CHARACTER SET utf8 ;
+USE `bdbuzons` ;
+
+-- -----------------------------------------------------
+-- Table `bdbuzons`.`registro_empleado`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `bdbuzons`.`registro_empleado` ;
+
+CREATE TABLE IF NOT EXISTS `bdbuzons`.`registro_empleado` (
+  `consecutivo` INT(11) NOT NULL AUTO_INCREMENT,
+  `identificacion` VARCHAR(45) NOT NULL,
+  `id` VARCHAR(45) NULL DEFAULT NULL,
+  `fecha_contrato` DATETIME NULL DEFAULT NULL,
+  `nombres` VARCHAR(80) NOT NULL,
+  `apellidos` VARCHAR(100) NOT NULL,
+  `descripcion` VARCHAR(150) NULL DEFAULT NULL,
+  `nombre_centro_costo` VARCHAR(100) NULL DEFAULT NULL,
+  `nombre_centro_trabajo` VARCHAR(100) NULL DEFAULT NULL,
+  `usuario_Heon` VARCHAR(100) NULL DEFAULT NULL,
+  `facilitador` VARCHAR(100) NULL DEFAULT NULL,
+  `linea` VARCHAR(100) NULL DEFAULT NULL,
+  `grupo_linea` VARCHAR(100) NULL DEFAULT NULL,
+  `origen` VARCHAR(100) NULL DEFAULT NULL,
+  `cargo` VARCHAR(100) NULL DEFAULT NULL,
+  `observacion` VARCHAR(100) NULL DEFAULT NULL,
+  `fecha_reporte` DATETIME NULL DEFAULT NULL,
+  `estado` VARCHAR(100) NULL DEFAULT NULL,
+  `fecha_retiro` DATETIME NULL DEFAULT NULL,
+  `mes_retiro` VARCHAR(45) NULL DEFAULT NULL,
+  `inicio_novedad` DATETIME NULL DEFAULT NULL,
+  `fin_novedad` DATETIME NULL DEFAULT NULL,
+  `disponible` TINYINT(1) NULL DEFAULT NULL,
+  `asiste` VARCHAR(100) NULL DEFAULT NULL,
+  `causa` VARCHAR(100) NULL DEFAULT NULL,
+  `fecha_registro` DATETIME NULL DEFAULT NULL,
+  `foto` LONGBLOB NULL DEFAULT NULL,
+  `fecha_ingreso` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`consecutivo`),
+  UNIQUE INDEX `identificacion_UNIQUE` (`identificacion` ASC))
+ENGINE = InnoDB
+AUTO_INCREMENT = 131206
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `bdbuzons`.`buzon_sugerencias`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `bdbuzons`.`buzon_sugerencias` ;
+
+CREATE TABLE IF NOT EXISTS `bdbuzons`.`buzon_sugerencias` (
+  `consecutivo_Buzon` INT(11) NOT NULL AUTO_INCREMENT,
+  `fecha_sugerencias` DATETIME NULL DEFAULT NULL,
+  `apellidosy_nombres` VARCHAR(200) NULL DEFAULT NULL,
+  `documento` VARCHAR(45) NOT NULL,
+  `fecha_ingreso` DATETIME NULL DEFAULT NULL,
+  `cargo_actual` VARCHAR(45) NULL DEFAULT NULL,
+  `servicio` VARCHAR(45) NULL DEFAULT NULL,
+  `sugerencia` VARCHAR(4000) NULL DEFAULT NULL,
+  `fecha_respuesta` DATETIME NULL DEFAULT NULL,
+  `usuario_respuesta` VARCHAR(45) NULL DEFAULT NULL,
+  `respuesta` VARCHAR(4000) NULL DEFAULT NULL,
+  `Registro_Empleado_consecutivo` INT(11) NOT NULL,
+  PRIMARY KEY (`consecutivo_Buzon`),
+  INDEX `fk_Buzon_Sugerencias_Registro_Empleado_idx` (`Registro_Empleado_consecutivo` ASC),
+  CONSTRAINT `fk_Buzon_Sugerencias_Registro_Empleado`
+    FOREIGN KEY (`Registro_Empleado_consecutivo`)
+    REFERENCES `bdbuzons`.`registro_empleado` (`consecutivo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 69
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `bdbuzons`.`catalogotablas`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `bdbuzons`.`catalogotablas` ;
+
+CREATE TABLE IF NOT EXISTS `bdbuzons`.`catalogotablas` (
+  `nombre` VARCHAR(45) NOT NULL,
+  `descripcion` VARCHAR(150) NULL DEFAULT NULL,
+  PRIMARY KEY (`nombre`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `bdbuzons`.`grupos`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `bdbuzons`.`grupos` ;
+
+CREATE TABLE IF NOT EXISTS `bdbuzons`.`grupos` (
+  `Nombre` VARCHAR(45) NOT NULL,
+  `Descripcion` VARCHAR(80) NULL DEFAULT NULL,
+  PRIMARY KEY (`Nombre`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `bdbuzons`.`miembro`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `bdbuzons`.`miembro` ;
+
+CREATE TABLE IF NOT EXISTS `bdbuzons`.`miembro` (
+  `id_miembro` INT(11) NOT NULL AUTO_INCREMENT,
+  `Registro_Empleado_consecutivo` INT(11) NOT NULL,
+  `Grupos_Nombre` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_miembro`, `Registro_Empleado_consecutivo`, `Grupos_Nombre`),
+  INDEX `fk_Registro_Empleado_has_Grupos_Grupos1_idx` (`Grupos_Nombre` ASC),
+  INDEX `fk_Registro_Empleado_has_Grupos_Registro_Empleado1_idx` (`Registro_Empleado_consecutivo` ASC),
+  CONSTRAINT `fk_Registro_Empleado_has_Grupos_Grupos1`
+    FOREIGN KEY (`Grupos_Nombre`)
+    REFERENCES `bdbuzons`.`grupos` (`Nombre`)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_Registro_Empleado_has_Grupos_Registro_Empleado1`
+    FOREIGN KEY (`Registro_Empleado_consecutivo`)
+    REFERENCES `bdbuzons`.`registro_empleado` (`consecutivo`)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 16
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `bdbuzons`.`permisos`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `bdbuzons`.`permisos` ;
+
+CREATE TABLE IF NOT EXISTS `bdbuzons`.`permisos` (
+  `adicionar` TINYINT(1) NULL DEFAULT NULL,
+  `consultar` TINYINT(1) NULL DEFAULT NULL,
+  `listar` TINYINT(1) NULL DEFAULT NULL,
+  `imprimir` TINYINT(1) NULL DEFAULT NULL,
+  `eliminar` TINYINT(1) NULL DEFAULT NULL,
+  `editar` TINYINT(1) NULL DEFAULT NULL,
+  `exportar` TINYINT(1) NULL DEFAULT NULL,
+  `importar` TINYINT(1) NULL DEFAULT NULL,
+  `Grupos_Nombre` VARCHAR(45) NOT NULL,
+  `catalogoTablas_nombre` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`Grupos_Nombre`, `catalogoTablas_nombre`),
+  INDEX `fk_permisos_catalogoTablas1_idx` (`catalogoTablas_nombre` ASC),
+  CONSTRAINT `fk_Permisos_Grupos1`
+    FOREIGN KEY (`Grupos_Nombre`)
+    REFERENCES `bdbuzons`.`grupos` (`Nombre`)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_permisos_catalogoTablas1`
+    FOREIGN KEY (`catalogoTablas_nombre`)
+    REFERENCES `bdbuzons`.`catalogotablas` (`nombre`)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

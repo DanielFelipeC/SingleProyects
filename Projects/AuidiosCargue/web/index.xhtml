@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:growl id="growl" autoUpdate="true" life="4000"/>
+        <h:form id="form" enctype="multipart/form-data">
+            <p:fileUpload id="archivo" mode="advanced" skinSimple="true" label="Sube" value="#{cargueController.file}" multiple="true"  fileUploadListener="#{cargueController.upload}" dragDropSupport="true"  fileLimitMessage="Solo se permite subir 1000 archivos a la vz" invalidSizeMessage="solo se permiten archivos de maximo 100 MB /"/>
+        </h:form>
+    </h:body>
+</html>
+

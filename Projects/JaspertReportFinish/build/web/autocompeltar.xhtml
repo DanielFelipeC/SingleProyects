@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <script>
+            $(function () {
+                
+                var availableTags = #{usuariosLinkinCRMController.nobmresuser()};
+                $("#tags").autocomplete({
+                    source: availableTags,
+                    alert("Holamunfo")       
+                });
+            });
+        </script>
+    </h:head>
+    <h:body>
+        <h:form id="yourForm" prependId="false">
+            <h:inputText id="tags" />
+            <h:commandButton value="ADD" >
+            </h:commandButton>
+        </h:form>
+    </h:body>
+</html>
+

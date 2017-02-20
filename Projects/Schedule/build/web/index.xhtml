@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head> 
+        <title>Facelet Title</title>
+        <h:outputScript library="js" name="CalendarTraduccion.js"/> 
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"></link>
+
+        <style>
+            .fc-event{position:relative;display:block;font-size:.85em;line-height:1.3;border-radius:3px;border:1px solid #186805;background-color:green;font-weight:normal}
+
+        </style>
+    </h:head>        
+    <h:body>
+        <h:form>       
+            <p:growl id="messages" showDetail="true"  />
+            <center>
+                <h:panelGrid columnClasses="value" width="750" border="1">     
+                    <center>
+                        <h3 style="font-family: Raleway;font-size: 25px">Agenda</h3>         
+                    </center>
+                    <p:schedule  id="schedule" value="#{agendaController.eventModel}" aspectRatio="1.8" draggable="false" resizable="false" widgetVar="myschedule" timeZone="GMT-5" locale="es" tooltip="true">                            
+                        <td>d</td>
+                        <p:ajax event="dateSelect" listener="#{agendaController.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
+                        <p:ajax event="eventSelect" listener="#{agendaController.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
+                        <p:ajax event="eventMove" listener="#{agendaController.onEventMove}" update="messages" />
+                        <p:ajax event="eventResize" listener="#{agendaController.onEventResize}" update="messages" />
+
+                    </p:schedule>
+
+                </h:panelGrid>
+            </center>
+            <p:dialog closeOnEscape="true" draggable="false" widgetVar="eventDialog" header="Detalles del Evento" showEffect="clip" hideEffect="clip" modal="true">  
+                <h:panelGrid id="eventDetails" columns="2">
+                    <p:outputLabel for="title" value="Evento:" />
+                    <p:inputText id="title" value="#{agendaController.event.title}" required="true"/>
+
+                    <p:outputLabel for="from" value="De:" />     
+                    <p:calendar id="from" value="#{agendaController.event.startDate}" timeZone="GMT-5" pattern="dd/MM/yyyy HH:mm" locale="es" mindate="#{agendaController.fechaMinima}" maxdate="#{agendaController.fechaMaxima}" />
+
+                    <p:outputLabel for="to" value="A:" />
+                    <p:calendar id="to" value="#{agendaController.event.endDate}" timeZone="GMT-5" pattern="dd/MM/yyyy HH:mm" locale="es" mindate="#{agendaController.fechaMinima}"/>
+
+                    <p:outputLabel for="allDay" value="Todo el día:" />
+                    <h:selectBooleanCheckbox id="allDay" value="#{agendaController.event.allDay}" /> 
+
+                    <p:commandButton id="addButton" value="Guardar" actionListener="#{agendaController.addEvent}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();" />
+                    <p:commandButton type="reset" value="Reiniciar" />
+                    <p:commandButton id="deleteButton" rendered="#{agendaController.botonBorrar}" value="Borrar" actionListener="#{agendaController.deleteEvent}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();" >
+
+                        <p:confirm header="&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Confirmar" message="Esta seguro de borrar este evento" icon="ui-icon-info" />
+
+                    </p:commandButton>       
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <center>
+                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </center> 
+                    </p:confirmDialog>
+                </h:panelGrid>             
+            </p:dialog>    
+        </h:form> 
+
+        <p:panelGrid style="margin-top:20px" columns="7">
+            
+
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Namsdfsdfsdfsdfsdfsde:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            <h:outputText value="Name:" />
+            
+        </p:panelGrid>
+        
+
+    </h:body>                   
+</html>
+

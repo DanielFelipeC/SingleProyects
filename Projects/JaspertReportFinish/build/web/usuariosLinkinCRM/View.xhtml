@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UsuariosLinkinCRMViewDlg" widgetVar="UsuariosLinkinCRMViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewUsuariosLinkinCRMTitle}">
+            <h:form id="UsuariosLinkinCRMViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{usuariosLinkinCRMController.selected != null}">
+                        <h:outputText value="#{bundle.ViewUsuariosLinkinCRMLabel_IDUsuarios}"/>
+                        <h:outputText value="#{usuariosLinkinCRMController.selected.IDUsuarios}" title="#{bundle.ViewUsuariosLinkinCRMTitle_IDUsuarios}"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLinkinCRMLabel_login}"/>
+                        <h:outputText value="#{usuariosLinkinCRMController.selected.login}" title="#{bundle.ViewUsuariosLinkinCRMTitle_login}"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLinkinCRMLabel_password}"/>
+                        <h:outputText value="#{usuariosLinkinCRMController.selected.password}" title="#{bundle.ViewUsuariosLinkinCRMTitle_password}"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLinkinCRMLabel_nombreUsuario}"/>
+                        <h:outputText value="#{usuariosLinkinCRMController.selected.nombreUsuario}" title="#{bundle.ViewUsuariosLinkinCRMTitle_nombreUsuario}"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLinkinCRMLabel_email}"/>
+                        <h:outputText value="#{usuariosLinkinCRMController.selected.email}" title="#{bundle.ViewUsuariosLinkinCRMTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLinkinCRMLabel_foto}"/>
+                        <h:outputText value="#{usuariosLinkinCRMController.selected.foto}" title="#{bundle.ViewUsuariosLinkinCRMTitle_foto}"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLinkinCRMLabel_telefono}"/>
+                        <h:outputText value="#{usuariosLinkinCRMController.selected.telefono}" title="#{bundle.ViewUsuariosLinkinCRMTitle_telefono}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="UsuariosLinkinCRMViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:growl id="growl" autoUpdate="true" life="4000"/>
+        <h:form id="form" enctype="multipart/form-data">
+            <p:fileUpload style="width: 800px;" id="archivo" mode="advanced" skinSimple="true" label="Sube" value="#{cargueController.file}" multiple="true"  fileUploadListener="#{cargueController.upload}" dragDropSupport="true" fileLimit="1000" sizeLimit="104857600"  cancelLabel="Cancelar" fileLimitMessage="Solo se permite subir 1000 archivos a la vz" invalidSizeMessage="solo se permiten archivos de maximo 100 MB /" update="formBicth"/>
+        </h:form>
+        <h:form id="formBicth">
+            <p:panel>
+                <p:dataTable id="datalist" value="#{cargueController.regresar()}" var="item"
+                             rowKey="#{item.nombre}"
+                             emptyMessage="No se encontraron resultados"
+                             scrollable="true"
+                             scrollHeight="250"
+                             >
+
+                    <p:column headerText="Nombre">
+                        <h:outputText value="#{item.nombre}"/>
+                    </p:column>
+                    <p:column headerText="Tipo">
+                        <h:outputText value="#{item.tipo}"/>
+                    </p:column>
+                    <p:column headerText="Ubicacion">
+                        <h:outputText value="#{item.ubicacion}"/>
+                    </p:column>
+                    <p:column headerText="Descargar">
+                        <a href="#{item.nombre}.#{item.tipo}" download="#{item.nombre}.#{item.tipo}">
+                            Descargar Archivo
+                        </a>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+
+    </h:body>
+</html>
