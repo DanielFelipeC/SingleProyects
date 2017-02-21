@@ -1,0 +1,26 @@
+*::selection{
+  background: #FFEF00;
+color: black;
+}
+
+*::-moz-selection{
+  background: #FFEF00;
+color: black;
+}
+  #boton {
+ border: none;
+ background: #3a7999;
+ color: #f2f2f2;
+ padding: 10px;
+ font-size: 15px;
+ border-radius: 5px;
+ position: relative;
+ box-sizing: border-box;
+ transition: all 500ms ease;}
+
+ #palabaClave{
+height: 42px;
+border-radius: 0px 5px 5px 0px;
+-webkit-border-radius:0px 5px 5px 0px;;
+padding: 0px 15px;
+width: 350px;}

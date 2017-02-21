@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Mlens responsive demo</title>
+		<link rel="icon"          href="img/favicon.ico" type="image/x-icon" />
+    	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+		<meta name="robots" content="index,follow" />
+		<meta name="author" content="Federica Sibella - musings.it" />
+		<meta name="geo.placename" content="via Generale Alberico Albricci 1, 24128 Bergamo, Italy">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10 col-lg-offset-1">
+					<h1>Mlens responsive demo</h1>
+					<p>Change your browser window dimensions to see the responsive feature in action. <a href="http://mlens.musings.it">Back to mlens homepage</a></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-10 col-lg-offset-1">
+					<img class="img-responsive" id="gifts" src="img/xmas-gifts-presents-1000.jpg" data-big="img/xmas-gifts-presents-2000.jpg" data-big2x="img/xmas-gifts-presents-2000.jpg" />
+				</div>
+			</div>
+		</div>
+		<!--scripts-->
+		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mlens-1.6.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#gifts").mlens({
+					imgSrc: $("#gifts").attr("data-big"),	    // path of the hi-res version of the image
+					imgSrc2x: $("#gifts").attr("data-big2x"),  // path of the hi-res @2x version of the image
+					lensShape: "square",				// shape of the lens (circle/square)
+					lensSize: ["40%","50%"],					// size of the lens (in px or in % with respect to the image dimensions)
+					borderSize: 5,					// size of the lens border (in px)
+					borderColor: "#44ab5a"				// color of the lens border (#hex)
+				});	
+			});
+		</script>
+	</body>
+</html>

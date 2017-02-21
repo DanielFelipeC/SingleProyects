@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://10.99.222.10:8080/StatitcsSOAP/FindAllProfesionales?WSDL" uri="wsdl/10.99.222.10_8080/StatitcsSOAP/FindAllProfesionales.wsdl"/>
+    <system systemId="http://10.99.222.10:8080/StatitcsSOAP/FindAllProfesionales?xsd=1" uri="wsdl/10.99.222.10_8080/StatitcsSOAP/FindAllProfesionales.xsd_1.xsd"/>
+    <system systemId="file:/C:/Users/dfcastellanosc.SOPORTECOS/Desktop/wsdlProfesionalsCRUD-SOAP.WSDL" uri="wsdl/wsdlProfesionalsCRUD-SOAP.WSDL.wsdl"/>
+    <system systemId="file:/C:/Users/dfcastellanosc.SOPORTECOS/Desktop/wsdlProfesionalsCRUD-SOAP.xml" uri="wsdl/wsdlProfesionalsCRUD-SOAP.xml.wsdl"/>
+    <system systemId="file:/C:/Users/dfcastellanosc.SOPORTECOS/Desktop/FindAllProfesionales2.wsdl" uri="wsdl/FindAllProfesionales2.wsdl"/>
+</catalog>

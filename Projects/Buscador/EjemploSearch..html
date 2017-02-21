@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Buscar</TITLE></HEAD>
+<BODY>
+<A name=top></A> 
+<center>
+<H3><FONT face=Verdana,Arial,Helvetica,sans-serif color=#000099>Buscador de Palabras Online Contact Service</FONT></H3>
+</center>
+
+<link rel="stylesheet" type="text/css" href="StyleBuscador.css"  />
+
+
+<SCRIPT language=JavaScript SRC="BuscadorInDoc.js">
+ 
+</SCRIPT>
+
+ 
+<FORM name="f1"  >
+<center>
+  <input name="t1" id="palabaClave" >
+  <INPUT id="boton" type=button value="Buscar" onClick="if(document.f1.t1.value!=null  && document.f1.t1.value!='') &#13;&#10;document.f1.t1.disabled=true;findString(document.f1.t1.value);document.f1.t1.disabled=false;return false;">
+</center>
+
+  Holamundo contact service
+</FORM>
+</BODY>
+</HTML>
